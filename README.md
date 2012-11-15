@@ -24,7 +24,19 @@ You will be missing some NuGet packages. Use the Package Restore functionality t
 
 The bot uses Entity Framework Code First. You will need to have permissions to create the database file.
 
+The app assumes the Runner project has an app.config file that stores your keys and whatnot. Here is a sample:
 
+    <configuration>
+        <startup> 
+            <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+        </startup>
+      <appSettings>
+        <add key="ConsumerKey" value="MyConsumerKey"/>
+        <add key="ConsumerSecret" value="MyConsumerSecret"/>
+        <add key="Token" value="MyToken"/>
+        <add key="TokenSecret" value="MyTokenSecret"/>
+      </appSettings>
+    </configuration>
 
 
 
