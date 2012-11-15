@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YammerBot.Core", "YammerBot.Core\YammerBot.Core.csproj", "{1484C8A5-80AF-4458-B68D-659873E9BCB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YammerBot.Runner", "YammerBot.Runner\YammerBot.Runner.csproj", "{2195B386-0818-4867-9B3D-C5979BED1C66}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A5E982FE-B936-4773-806B-9C1B4B86F74E}"
+	ProjectSection(SolutionItems) = preProject
+		Data.mdf = Data.mdf
+		Data_log.ldf = Data_log.ldf
+		Ideas.txt = Ideas.txt
+		Quotes.txt = Quotes.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YammerBot.SQL", "YammerBot.SQL\YammerBot.SQL.csproj", "{1CC49D55-C029-457D-A90D-B1405FA20E53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YammerBot.Entity", "YammerBot.Entity\YammerBot.Entity.csproj", "{EF78757C-315A-4EB2-A37F-D369C6061B1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YammerBot.Core.Test.Unit", "YammerBot.Core.Test\YammerBot.Core.Test.Unit.csproj", "{A220ABFE-0581-41E1-97A7-B58F5411CD42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YammerBot.Core.Test.EndToEnd", "YammerBot.Core.Test.EndToEnd\YammerBot.Core.Test.EndToEnd.csproj", "{3C664A30-61E9-419D-9853-28019977A47A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevDefined.OAuth", "DevDefined.OAuth\DevDefined.OAuth.csproj", "{61B700B6-3911-4CEF-8751-7F42CA765068}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1484C8A5-80AF-4458-B68D-659873E9BCB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1484C8A5-80AF-4458-B68D-659873E9BCB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1484C8A5-80AF-4458-B68D-659873E9BCB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1484C8A5-80AF-4458-B68D-659873E9BCB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2195B386-0818-4867-9B3D-C5979BED1C66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2195B386-0818-4867-9B3D-C5979BED1C66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2195B386-0818-4867-9B3D-C5979BED1C66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2195B386-0818-4867-9B3D-C5979BED1C66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CC49D55-C029-457D-A90D-B1405FA20E53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CC49D55-C029-457D-A90D-B1405FA20E53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CC49D55-C029-457D-A90D-B1405FA20E53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CC49D55-C029-457D-A90D-B1405FA20E53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF78757C-315A-4EB2-A37F-D369C6061B1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF78757C-315A-4EB2-A37F-D369C6061B1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF78757C-315A-4EB2-A37F-D369C6061B1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF78757C-315A-4EB2-A37F-D369C6061B1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A220ABFE-0581-41E1-97A7-B58F5411CD42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A220ABFE-0581-41E1-97A7-B58F5411CD42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A220ABFE-0581-41E1-97A7-B58F5411CD42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A220ABFE-0581-41E1-97A7-B58F5411CD42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C664A30-61E9-419D-9853-28019977A47A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C664A30-61E9-419D-9853-28019977A47A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C664A30-61E9-419D-9853-28019977A47A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C664A30-61E9-419D-9853-28019977A47A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61B700B6-3911-4CEF-8751-7F42CA765068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61B700B6-3911-4CEF-8751-7F42CA765068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61B700B6-3911-4CEF-8751-7F42CA765068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61B700B6-3911-4CEF-8751-7F42CA765068}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
