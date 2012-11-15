@@ -20,4 +20,12 @@ The first time you execute, you will probably need to load some data. Here's som
 
 This will load the latest 20 messages from Yammer, and save them into the database without looping. Run this before or in place of the looping code in Program.cs. This creates a sort of checkpoint, and the bot will not attempt to fetch messages before this point.
 
+You will be missing some NuGet packages. Use the Package Restore functionality to retreive the necessary packages.
+
+The bot uses Entity Framework Code First. You will need to have permissions to create the database file.
+
+
+
+
+
 This bot can also be used to retreive all messages in your Yammer network, but there's no built-in functionality yet.
