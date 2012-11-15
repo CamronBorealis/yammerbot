@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1484C8A5-80AF-4458-B68D-659873E9BCB5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YammerBot.Core</RootNamespace>
+    <AssemblyName>YammerBot.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.10\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Compliment\Implementation\ComplimentFetcher.cs" />
+    <Compile Include="Compliment\Implementation\ComplimentService.cs" />
+    <Compile Include="Compliment\Implementation\ComplimentTextDeserializer.cs" />
+    <Compile Include="Compliment\Implementation\IComplimentTextTransformer.cs" />
+    <Compile Include="Compliment\Interface\IComplimentFetcher.cs" />
+    <Compile Include="Compliment\Interface\IComplimentService.cs" />
+    <Compile Include="Compliment\Interface\IComplimentTextDeserializer.cs" />
+    <Compile Include="Compliment\Interface\IComplimentTextTransformer.cs" />
+    <Compile Include="OAuth\Implementation\OauthSessionProvider.cs" />
+    <Compile Include="OAuth\Implementation\OauthValueProvider.cs" />
+    <Compile Include="OAuth\Interface\IOauthSessionProvider.cs" />
+    <Compile Include="OAuth\Interface\IOauthValueProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quote\Implementation\QuoteRetriever.cs" />
+    <Compile Include="Quote\Interface\IQuoteRetriever.cs" />
+    <Compile Include="Scheduling\Implementation\LoopingTaskRunner.cs" />
+    <Compile Include="Scheduling\Interface\ILoopingTaskRunner.cs" />
+    <Compile Include="System\Implementation\EnvironmentInfoProvider.cs" />
+    <Compile Include="System\Implementation\FileDataProvider.cs" />
+    <Compile Include="System\Implementation\RandomNumberGenerator.cs" />
+    <Compile Include="System\Implementation\ThreadSleeper.cs" />
+    <Compile Include="System\Implementation\YammerDatabase.cs" />
+    <Compile Include="System\Interface\IEnvironmentInfoProvider.cs" />
+    <Compile Include="System\Interface\IFileDataProvider.cs" />
+    <Compile Include="System\Interface\IRandomNumberGenerator.cs" />
+    <Compile Include="System\Interface\ISleeper.cs" />
+    <Compile Include="System\Interface\IYammerDatabase.cs" />
+    <Compile Include="System\Interface\IYammerService.cs" />
+    <Compile Include="Yammer\Implementation\YammerCommandFetcher.cs" />
+    <Compile Include="Yammer\Implementation\YammerMessageDatabaseManager.cs" />
+    <Compile Include="Yammer\Implementation\YammerMessageFetcher.cs" />
+    <Compile Include="Yammer\Implementation\YammerMessagePoster.cs" />
+    <Compile Include="Yammer\Implementation\YammerMessageResponseDeserializer.cs" />
+    <Compile Include="Yammer\Implementation\YammerMessageServiceManager.cs" />
+    <Compile Include="Yammer\Implementation\YammerResponseFetcher.cs" />
+    <Compile Include="Yammer\Implementation\YammerService.cs" />
+    <Compile Include="Yammer\Implementation\YammerTaskRunner.cs" />
+    <Compile Include="Yammer\Interface\IYammerCommandFetcher.cs" />
+    <Compile Include="Yammer\Interface\IYammerMessageDatabaseManager.cs" />
+    <Compile Include="Yammer\Interface\IYammerMessageFetcher.cs" />
+    <Compile Include="Yammer\Interface\IYammerMessagePoster.cs" />
+    <Compile Include="Yammer\Interface\IYammerMessageResponseDeserializer.cs" />
+    <Compile Include="Yammer\Interface\IYammerMessageServiceManager.cs" />
+    <Compile Include="Yammer\Interface\IYammerResponseFetcher.cs" />
+    <Compile Include="Yammer\Interface\IYammerTaskRunner.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DevDefined.OAuth\DevDefined.OAuth.csproj">
+      <Project>{61b700b6-3911-4cef-8751-7f42ca765068}</Project>
+      <Name>DevDefined.OAuth</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YammerBot.Entity\YammerBot.Entity.csproj">
+      <Project>{ef78757c-315a-4eb2-a37f-d369c6061b1a}</Project>
+      <Name>YammerBot.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YammerBot.SQL\YammerBot.SQL.csproj">
+      <Project>{1cc49d55-c029-457d-a90d-b1405fa20e53}</Project>
+      <Name>YammerBot.SQL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
