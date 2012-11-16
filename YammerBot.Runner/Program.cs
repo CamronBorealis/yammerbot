@@ -1,4 +1,5 @@
-﻿using Ninject;
+﻿using System.Linq;
+using Ninject;
 using YammerBot.Core.Compliment.Implementation;
 using YammerBot.Core.Compliment.Interface;
 using YammerBot.Core.OAuth.Implementation;
@@ -42,6 +43,16 @@ namespace YammerBot.Runner
 
             kernel.Bind<IOauthSessionProvider>().To<OauthSessionProvider>().InSingletonScope();
             kernel.Bind<IYammerDatabase>().To<YammerDatabase>().InSingletonScope();
+
+            var database = kernel.Get<IYammerDatabase>();
+            if (!database.Messages.Any())
+            {
+                var fetcher = kernel.Get<IYammerMessageFetcher>();
+                var databaseManager = kernel.Get<IYammerMessageDatabaseManager>();
+                var messages = fetcher.GetLatestMessages();
+                databaseManager.SaveMessages(messages);
+                databaseManager.SaveChanges();
+            }
 
             var runner = kernel.Get<IYammerTaskRunner>();
             var looper = kernel.Get<ILoopingTaskRunner>();

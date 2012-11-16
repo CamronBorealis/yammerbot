@@ -7,9 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YammerBot.Runner", "YammerB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A5E982FE-B936-4773-806B-9C1B4B86F74E}"
 	ProjectSection(SolutionItems) = preProject
-		Data.mdf = Data.mdf
-		Data_log.ldf = Data_log.ldf
-		Ideas.txt = Ideas.txt
 		Quotes.txt = Quotes.txt
 	EndProjectSection
 EndProject
