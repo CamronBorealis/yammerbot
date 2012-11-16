@@ -35,7 +35,7 @@ namespace YammerBot.Core.Yammer.Implementation
                                        {
                                            "has #joined the DevFacto network", new List<string>
                                                              {
-                                                                 "Welcome! I'm Yammer Bot, an automated program that responds to posts. See you around!"
+                                                                 "Welcome! I'm Yammer Bot, an automated program that responds to posts. I am maintained by Camron Bute, and am hosted on GitHub at https://github.com/CamronBute/yammerbot. See you around!"
                                                              }
                                        },
                                        {
