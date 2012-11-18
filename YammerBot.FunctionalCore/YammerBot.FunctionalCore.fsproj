@@ -42,8 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dictionary\DictionaryService.fs" />
-    <Compile Include="Dictionary\Dictionary.fs" />
+    <Compile Include="DictionaryService.fs" />
+    <Compile Include="Dictionary.fs" />
     <None Include="Script.fsx" />
   </ItemGroup>
   <PropertyGroup>
