@@ -13,7 +13,7 @@ module WordProcessor =
         let cleanWord = regex.Match(word).Groups.Item("word").Value
         cleanWord.ToLowerInvariant()
 
-    let SexifyPhrase (phrase : string) (defs : Map<string,seq<string>>) =
+    let Sexify (phrase : string) (defs : Map<string,seq<string>>) =
         phrase.Trim().Split(' ')
         |> Seq.map (fun w -> match defs.TryFind(NormalizeWord w) with
                              | Some x -> if (IsNoun x) then ("sexy " + w) else w
