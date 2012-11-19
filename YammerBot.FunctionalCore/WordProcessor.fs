@@ -8,9 +8,14 @@ module WordProcessor =
         defs
         |> Seq.exists (fun w -> regex.IsMatch w)
 
-    let Sexify (phrase : string) (defs : Map<string,seq<string>>) =
+    let NormalizeWord (word : string) =
+        let regex = Regex("^[\s;\.\,]*(?<word>['\w]*)")
+        let cleanWord = regex.Match(word).Groups.Item("word").Value
+        cleanWord.ToLowerInvariant()
+
+    let SexifyPhrase (phrase : string) (defs : Map<string,seq<string>>) =
         phrase.Trim().Split(' ')
-        |> Seq.map (fun w -> match defs.TryFind(w) with
+        |> Seq.map (fun w -> match defs.TryFind(NormalizeWord w) with
                              | Some x -> if (IsNoun x) then ("sexy " + w) else w
                              | None -> w)
         |> (fun (coll : seq<string>) -> Seq.fold (fun accum w -> accum + " " + w) (Seq.head coll) (Seq.skip 1 coll))

@@ -33,6 +33,25 @@ type ``Given a list of definitions`` ()=
         WordProcessor.IsNoun Seq.empty |> should be False
 
 [<TestFixture>]
+type ``The NormalizeWord function`` ()=
+    [<Test>] member test.
+     ``should make all characters the same case`` ()=
+        WordProcessor.NormalizeWord "CaPtaIn" |> should equal "captain"
+
+    [<Test>] member test.
+     ``should remove whitespace`` ()=
+        WordProcessor.NormalizeWord "  captain  \t " |> should equal "captain"
+
+    [<Test>] member test.
+     ``should remove trailing punctuation`` ()=
+        WordProcessor.NormalizeWord "captain." |> should equal "captain";
+        WordProcessor.NormalizeWord ".captain" |> should equal "captain"
+
+    [<Test>] member test.
+     ``should pass through contractions`` ()=
+        WordProcessor.NormalizeWord "don't" |> should equal "don't"
+
+[<TestFixture>]
 type ``Given a phrase and a list of definitions`` ()=
     let definitions = [ 
         ("this", (["this, p. blah blah blah"] |> Seq.ofList));
@@ -46,4 +65,8 @@ type ``Given a phrase and a list of definitions`` ()=
     [<Test>] member test.
      ``Sexify should insert 'sexy' before nouns`` ()=
         WordProcessor.Sexify "this sentence" definitions |> should equal "this sexy sentence"
+
+    [<Test>] member test.
+     ``Sexify should still work with punctuation involved`` ()=
+        WordProcessor.Sexify "this sentence." definitions |> should equal "this sexy sentence."
 
