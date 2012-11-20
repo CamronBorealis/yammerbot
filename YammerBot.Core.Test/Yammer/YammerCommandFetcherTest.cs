@@ -1,10 +1,12 @@
 ﻿using Moq;
 using NUnit.Framework;
+using System.Collections.Generic;
 using YammerBot.Core.Compliment.Interface;
 using YammerBot.Core.Quote.Interface;
 using YammerBot.Core.System.Interface;
 using YammerBot.Core.Yammer.Implementation;
 using YammerBot.Core.Yammer.Interface;
+using YammerBot.FunctionalCore;
 using YammerBot.Entity.Yammer;
 
 namespace YammerBot.Core.Test.Unit.Yammer
@@ -17,6 +19,7 @@ namespace YammerBot.Core.Test.Unit.Yammer
         private Mock<IYammerMessagePoster> _messagePoster;
         private Mock<IQuoteRetriever> _quoteRetriever;
         private Mock<IComplimentFetcher> _complimentFetcher;
+        private Mock<IDictionaryService> _dictionaryService;
 
         [SetUp]
         public void YammerCommandFetcherSetup()
@@ -25,7 +28,11 @@ namespace YammerBot.Core.Test.Unit.Yammer
             _messagePoster = new Mock<IYammerMessagePoster>();
             _quoteRetriever = new Mock<IQuoteRetriever>();
             _complimentFetcher = new Mock<IComplimentFetcher>();
-            _commandFetcher = new YammerCommandFetcher(_randomNumberGenerator.Object, _messagePoster.Object, _quoteRetriever.Object, _complimentFetcher.Object);
+            _dictionaryService = new Mock<IDictionaryService>();
+            _commandFetcher = new YammerCommandFetcher(_randomNumberGenerator.Object, _messagePoster.Object, _quoteRetriever.Object, _complimentFetcher.Object, _dictionaryService.Object);
+
+            _dictionaryService.Setup(s => s.GetDefinitions(It.IsAny<string>())).Returns(new List<string>());
+            _dictionaryService.Setup(s => s.GetDefinitions("block")).Returns(new List<string>() { "block, n. it's a block!" });
         }
 
         [Test]
@@ -69,6 +76,14 @@ namespace YammerBot.Core.Test.Unit.Yammer
             var func = _commandFetcher.GetCommands()["catfacts"];
             var result = func(new Message { ID = 1 });
             _messagePoster.Verify(v => v.PostReply(It.IsAny<string>(), It.Is<long>(i => i == 1)), Times.Once());
+        }
+
+        [Test]
+        public void YammerCommandFetcher_GetCommands_SexifyShouldReturnSexifiedPhrase()
+        {
+            var func = _commandFetcher.GetCommands()["sexify"];
+            var result = func(new Message { ID = 1, Body = new MessageBody { Plain = "@@sexify I am a block!" } });
+            _messagePoster.Verify(v => v.PostReply(It.Is<string>(i => i == "I am a sexy block!"), It.Is<long>(i => i == 1)), Times.Once());
         }
     }
 }

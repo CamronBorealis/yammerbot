@@ -109,6 +109,10 @@
       <Project>{ef78757c-315a-4eb2-a37f-d369c6061b1a}</Project>
       <Name>YammerBot.Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\YammerBot.FunctionalCore\YammerBot.FunctionalCore.fsproj">
+      <Project>{0584ccdf-beda-4ea6-a3fa-bcc1195c5c5b}</Project>
+      <Name>YammerBot.FunctionalCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\YammerBot.SQL\YammerBot.SQL.csproj">
       <Project>{1cc49d55-c029-457d-a90d-b1405fa20e53}</Project>
       <Name>YammerBot.SQL</Name>

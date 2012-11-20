@@ -1,6 +1,7 @@
 ﻿namespace YammerBot.FunctionalCore.Test.Unit
 
 open YammerBot.FunctionalCore
+open System.Collections.Generic
 open NUnit.Framework
 open FsUnit
 
@@ -53,10 +54,9 @@ type ``The NormalizeWord function`` ()=
 
 [<TestFixture>]
 type ``Given a phrase and a list of definitions`` ()=
-    let definitions = [ 
-        ("this", (["this, p. blah blah blah"] |> Seq.ofList));
-        ("sentence", (["Sentence, n. blah blah blah"] |> Seq.ofList))
-                            ] |> Map.ofSeq
+    let definitions = System.Collections.Generic.Dictionary<string, IEnumerable<string>>()
+    do definitions.Add("this", (["this, p. blah blah blah"] |> Seq.ofList))
+    do definitions.Add("sentence", (["Sentence, n. blah blah blah"] |> Seq.ofList))
 
     [<Test>] member test.
      ``Sexify should not alter phrases without nouns`` ()=
