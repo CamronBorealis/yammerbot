@@ -2,7 +2,7 @@ using System;
 
 namespace YammerBot.Core.Yammer.Interface
 {
-    public interface IYammerMessageServiceManager
+    public interface IYammerServiceManager
     {
         string GetLatestMessagesTextFromServer();
         string GetLatestMessagesTextFromServerAfterMessageID(Int64 messageID);

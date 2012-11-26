@@ -22,7 +22,7 @@ namespace YammerBot.Core.Scheduling.Implementation
                     executeAction();
                 }
                 catch(Exception ex){Console.WriteLine(ex.Message);}
-                _sleeper.Sleep(millisecondsBetweenExecutes);
+                //_sleeper.Sleep(millisecondsBetweenExecutes);
             }
         }
     }

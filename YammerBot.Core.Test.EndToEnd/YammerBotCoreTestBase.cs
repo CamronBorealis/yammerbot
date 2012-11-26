@@ -50,7 +50,7 @@ namespace YammerBot.Core.Test.EndToEnd
             _kernel.Bind<IYammerMessageDatabaseManager>().To<YammerMessageDatabaseManager>();
             _kernel.Bind<IYammerMessagePoster>().To<YammerMessagePoster>();
             _kernel.Bind<IYammerMessageFetcher>().To<YammerMessageFetcher>();
-            _kernel.Bind<IYammerMessageServiceManager>().To<YammerMessageServiceManager>();
+            _kernel.Bind<IYammerServiceManager>().To<YammerServiceManager>();
             _kernel.Bind<IYammerTaskRunner>().To<YammerTaskRunner>();
             _kernel.Bind<IQuoteRetriever>().To<QuoteRetriever>();
             _kernel.Bind<ILoopingTaskRunner>().To<LoopingTaskRunner>();

@@ -11,13 +11,13 @@ namespace YammerBot.Core.Test.Unit.Yammer
     class YammerMessagePosterTest
     {
         private IYammerMessagePoster _messagePoster;
-        private Mock<IYammerMessageServiceManager> _serviceManager;
+        private Mock<IYammerServiceManager> _serviceManager;
         private Mock<IYammerMessageResponseDeserializer> _deserializer;
 
         [SetUp]
         public void YammerMessagePosterSetup()
         {
-            _serviceManager = new Mock<IYammerMessageServiceManager>();
+            _serviceManager = new Mock<IYammerServiceManager>();
             _deserializer = new Mock<IYammerMessageResponseDeserializer>();
             _messagePoster = new YammerMessagePoster(_serviceManager.Object, _deserializer.Object);
         }

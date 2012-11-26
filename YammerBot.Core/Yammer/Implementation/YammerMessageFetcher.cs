@@ -8,12 +8,12 @@ namespace YammerBot.Core.Yammer.Implementation
 {
     public class YammerMessageFetcher:IYammerMessageFetcher
     {
-        private readonly IYammerMessageServiceManager _serviceManager;
+        private readonly IYammerServiceManager _serviceManager;
         private readonly IYammerMessageResponseDeserializer _deserializer;
         private readonly IYammerMessageDatabaseManager _databaseManager;
         private readonly IFileDataProvider _fileDataProvider;
 
-        public YammerMessageFetcher(IYammerMessageServiceManager serviceManager, IYammerMessageResponseDeserializer deserializer,
+        public YammerMessageFetcher(IYammerServiceManager serviceManager, IYammerMessageResponseDeserializer deserializer,
             IYammerMessageDatabaseManager databaseManager, IFileDataProvider fileDataProvider)
         {
             _serviceManager = serviceManager;

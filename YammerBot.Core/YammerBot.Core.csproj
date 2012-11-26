@@ -85,7 +85,7 @@
     <Compile Include="Yammer\Implementation\YammerMessageFetcher.cs" />
     <Compile Include="Yammer\Implementation\YammerMessagePoster.cs" />
     <Compile Include="Yammer\Implementation\YammerMessageResponseDeserializer.cs" />
-    <Compile Include="Yammer\Implementation\YammerMessageServiceManager.cs" />
+    <Compile Include="Yammer\Implementation\YammerServiceManager.cs" />
     <Compile Include="Yammer\Implementation\YammerResponseFetcher.cs" />
     <Compile Include="Yammer\Implementation\YammerService.cs" />
     <Compile Include="Yammer\Implementation\YammerTaskRunner.cs" />
@@ -94,7 +94,7 @@
     <Compile Include="Yammer\Interface\IYammerMessageFetcher.cs" />
     <Compile Include="Yammer\Interface\IYammerMessagePoster.cs" />
     <Compile Include="Yammer\Interface\IYammerMessageResponseDeserializer.cs" />
-    <Compile Include="Yammer\Interface\IYammerMessageServiceManager.cs" />
+    <Compile Include="Yammer\Interface\IYammerServiceManager.cs" />
     <Compile Include="Yammer\Interface\IYammerResponseFetcher.cs" />
     <Compile Include="Yammer\Interface\IYammerService.cs" />
     <Compile Include="Yammer\Interface\IYammerTaskRunner.cs" />

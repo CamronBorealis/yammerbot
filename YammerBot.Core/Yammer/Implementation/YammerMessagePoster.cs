@@ -6,10 +6,10 @@ namespace YammerBot.Core.Yammer.Implementation
 {
     public class YammerMessagePoster:IYammerMessagePoster
     {
-        private IYammerMessageServiceManager _serviceManager;
+        private IYammerServiceManager _serviceManager;
         private IYammerMessageResponseDeserializer _deserializer;
 
-        public YammerMessagePoster(IYammerMessageServiceManager serviceManager, IYammerMessageResponseDeserializer deserializer)
+        public YammerMessagePoster(IYammerServiceManager serviceManager, IYammerMessageResponseDeserializer deserializer)
         {
             _serviceManager = serviceManager;
             _deserializer = deserializer;

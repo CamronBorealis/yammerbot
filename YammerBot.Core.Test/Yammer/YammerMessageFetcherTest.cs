@@ -13,7 +13,7 @@ namespace YammerBot.Core.Test.Unit.Yammer
     class YammerMessageFetcherTest
     {
         private IYammerMessageFetcher _messageFetcher;
-        private Mock<IYammerMessageServiceManager> _service;
+        private Mock<IYammerServiceManager> _service;
         private Mock<IYammerMessageResponseDeserializer> _deserializer;
         private Mock<IYammerMessageDatabaseManager> _databaseManager;
         private Mock<IFileDataProvider> _fileDataProvider;
@@ -21,7 +21,7 @@ namespace YammerBot.Core.Test.Unit.Yammer
         [SetUp]
         public void YammerMessageFetcherSetUp()
         {
-            _service = new Mock<IYammerMessageServiceManager>();
+            _service = new Mock<IYammerServiceManager>();
             _deserializer = new Mock<IYammerMessageResponseDeserializer>();
             _databaseManager = new Mock<IYammerMessageDatabaseManager>();
             _fileDataProvider = new Mock<IFileDataProvider>();

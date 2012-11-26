@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using Moq;
 using NUnit.Framework;
-using YammerBot.Core.System.Interface;
 using YammerBot.Core.Yammer.Implementation;
 using YammerBot.Core.Yammer.Interface;
 
@@ -11,14 +10,16 @@ namespace YammerBot.Core.Test.Unit.Yammer
     class YammerMessageServiceManagerTest
     {
         private Mock<IYammerService> _service;
+        private Mock<IRateGate> _rateGate;
 
-        private IYammerMessageServiceManager _messageServiceManager;
+        private IYammerServiceManager _serviceManager;
 
         [SetUp]
         public void YammerMessageServiceManagerSetUp()
         {
             _service = new Mock<IYammerService>();
-            _messageServiceManager = new YammerMessageServiceManager(_service.Object);
+            _rateGate = new Mock<IRateGate>();
+            _serviceManager = new YammerServiceManager(_service.Object, _rateGate.Object);
         }
 
         [Test]
@@ -26,10 +27,11 @@ namespace YammerBot.Core.Test.Unit.Yammer
         {
             _service.Setup(s => s.GetMessages(It.IsAny<IDictionary>())).Returns("Testing");
 
-            var result = _messageServiceManager.GetLatestMessagesTextFromServer();
+            var result = _serviceManager.GetLatestMessagesTextFromServer();
 
             Assert.AreEqual("Testing",result);
             _service.Verify(v=>v.GetMessages(It.Is<IDictionary>(i=>i==null)), Times.Once());
+            _rateGate.Verify(v=>v.WaitToProceed(), Times.Once());
         }
 
         [Test]
@@ -37,10 +39,11 @@ namespace YammerBot.Core.Test.Unit.Yammer
         {
             _service.Setup(s => s.GetMessages(It.IsAny<IDictionary>())).Returns("Testing");
 
-            var result = _messageServiceManager.GetLatestMessagesTextFromServerAfterMessageID(1);
+            var result = _serviceManager.GetLatestMessagesTextFromServerAfterMessageID(1);
 
             Assert.AreEqual("Testing", result);
             _service.Verify(v => v.GetMessages(It.Is<IDictionary>(i => (string)(i["older_than"]) == "1")), Times.Once());
+            _rateGate.Verify(v => v.WaitToProceed(), Times.Once());
         }
 
         [Test]
@@ -48,10 +51,11 @@ namespace YammerBot.Core.Test.Unit.Yammer
         {
             _service.Setup(s => s.PostMessage(It.IsAny<IDictionary>())).Returns("Testing");
 
-            var result = _messageServiceManager.PostNewMessage("Yo");
+            var result = _serviceManager.PostNewMessage("Yo");
 
             Assert.AreEqual("Testing", result);
             _service.Verify(v => v.PostMessage(It.Is<IDictionary>(i => (string)(i["body"]) == "Yo")), Times.Once());
+            _rateGate.Verify(v => v.WaitToProceed(), Times.Once());
         }
 
         [Test]
@@ -59,10 +63,11 @@ namespace YammerBot.Core.Test.Unit.Yammer
         {
             _service.Setup(s => s.PostMessage(It.IsAny<IDictionary>())).Returns("Testing");
 
-            var result = _messageServiceManager.PostMessageReply("Yo", 1);
+            var result = _serviceManager.PostMessageReply("Yo", 1);
 
             Assert.AreEqual("Testing", result);
             _service.Verify(v => v.PostMessage(It.Is<IDictionary>(i => (string)(i["body"]) == "Yo" && (string)(i["replied_to_id"]) == "1")), Times.Once());
+            _rateGate.Verify(v => v.WaitToProceed(), Times.Once());
         }
     }
 }
