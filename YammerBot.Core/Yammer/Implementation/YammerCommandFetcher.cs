@@ -1,28 +1,36 @@
 ﻿using System;
+using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using YammerBot.Core.Compliment.Interface;
 using YammerBot.Core.Quote.Interface;
 using YammerBot.Core.System.Interface;
 using YammerBot.Core.Yammer.Interface;
+using YammerBot.FunctionalCore;
 using YammerBot.Entity.Yammer;
 
 namespace YammerBot.Core.Yammer.Implementation
 {
     public class YammerCommandFetcher : IYammerCommandFetcher
     {
-
-        private IRandomNumberGenerator _randomNumberGenerator;
-        private IYammerMessagePoster _poster;
-        private IQuoteRetriever _quoteRetriever;
+        private readonly IRandomNumberGenerator _randomNumberGenerator;
+        private readonly IYammerMessagePoster _poster;
+        private readonly IQuoteRetriever _quoteRetriever;
         private readonly IComplimentFetcher _complimentFetcher;
-        private IDictionary<string, Func<Message, Message>> _allCommands;
+        private readonly IDictionaryService _dictionaryService;
+        private readonly IDictionary<string, Func<Message, Message>> _allCommands;
 
-        public YammerCommandFetcher(IRandomNumberGenerator randomNumberGenerator, IYammerMessagePoster poster, IQuoteRetriever quoteRetriever, IComplimentFetcher complimentFetcher)
+        public YammerCommandFetcher(IRandomNumberGenerator randomNumberGenerator, 
+                                    IYammerMessagePoster poster, 
+                                    IQuoteRetriever quoteRetriever, 
+                                    IComplimentFetcher complimentFetcher,
+                                    IDictionaryService dictionaryService)
         {
             _randomNumberGenerator = randomNumberGenerator;
             _poster = poster;
             _quoteRetriever = quoteRetriever;
             _complimentFetcher = complimentFetcher;
+            _dictionaryService = dictionaryService;
             _allCommands = new Dictionary<string, Func<Message, Message>>
                                   {
                                       {
@@ -73,6 +81,22 @@ namespace YammerBot.Core.Yammer.Implementation
                                           "whispersweetnothingstome", (message) =>
                                                           {
                                                               return _poster.PostReply(_complimentFetcher.GetRandomComplimentPhrase(), message.ID);
+                                                          }
+                                      },
+                                      {
+                                          "sexify", (message) =>
+                                                          {
+                                                              var cmd = new Command(message.Body.Plain);
+                                                              var wordDefinitions = cmd.Argument.Split(' ')
+                                                                                       .Select(word => WordProcessor.NormalizeWord(word))
+                                                                                       .Aggregate(new Dictionary<string,IEnumerable<string>>(),(accum, word) =>
+                                                                                                   {
+                                                                                                       if (!accum.Keys.Contains(word))
+                                                                                                           accum.Add(word, _dictionaryService.GetDefinitions(word));
+                                                                                                       return accum;
+                                                                                                   });
+
+                                                              return _poster.PostReply(WordProcessor.Sexify(cmd.Argument, wordDefinitions), message.ID);
                                                           }
                                       },
                                   };

@@ -4,13 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3C664A30-61E9-419D-9853-28019977A47A}</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>b88cb299-9e23-48e3-81a7-39f6bf1ab04e</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>YammerBot.Core.Test.EndToEnd</RootNamespace>
-    <AssemblyName>YammerBot.Core.Test.EndToEnd</AssemblyName>
+    <RootNamespace>YammerBot.FunctionalCore.Test.Unit</RootNamespace>
+    <AssemblyName>YammerBot.FunctionalCore.Test.Unit</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <Name>YammerBot.FunctionalCore.Test.Unit</Name>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -18,60 +18,56 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
+    <Tailcalls>false</Tailcalls>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>3</WarningLevel>
+    <DocumentationFile>bin\Debug\YammerBot.FunctionalCore.Test.Unit.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
+    <Tailcalls>true</Tailcalls>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>3</WarningLevel>
+    <DocumentationFile>bin\Release\YammerBot.FunctionalCore.Test.Unit.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Moq">
-      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    <Reference Include="FsUnit.NUnit">
+      <HintPath>..\packages\FsUnit.1.1.0.1\Lib\Net40\FsUnit.NUnit.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Ninject">
-      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+    <Reference Include="mscorlib" />
+    <Reference Include="FSharp.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Private>True</Private>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MessagesTest.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="YammerBotCoreTestBase.cs" />
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="CommandTest.fs" />
+    <Compile Include="WordProcessorTest.fs" />
+    <None Include="Script.fsx" />
     <None Include="packages.config" />
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\YammerBot.Core\YammerBot.Core.csproj">
-      <Project>{1484c8a5-80af-4458-b68d-659873e9bcb5}</Project>
-      <Name>YammerBot.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\YammerBot.Entity\YammerBot.Entity.csproj">
-      <Project>{ef78757c-315a-4eb2-a37f-d369c6061b1a}</Project>
-      <Name>YammerBot.Entity</Name>
-    </ProjectReference>
     <ProjectReference Include="..\YammerBot.FunctionalCore\YammerBot.FunctionalCore.fsproj">
-      <Project>{0584ccdf-beda-4ea6-a3fa-bcc1195c5c5b}</Project>
       <Name>YammerBot.FunctionalCore</Name>
+      <Project>{0584ccdf-beda-4ea6-a3fa-bcc1195c5c5b}</Project>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets" Condition=" Exists('$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets')" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -12,6 +12,7 @@ using YammerBot.Core.Yammer.Implementation;
 using YammerBot.Core.Yammer.Interface;
 using YammerBot.Core.System.Implementation;
 using YammerBot.Core.System.Interface;
+using YammerBot.FunctionalCore;
 
 namespace YammerBot.Runner
 {
@@ -20,6 +21,7 @@ namespace YammerBot.Runner
         static void Main(string[] args)
         {
             var kernel = new StandardKernel();
+            kernel.Bind<IDictionaryService>().To<DictionaryService>();
             kernel.Bind<IYammerMessageResponseDeserializer>().To<YammerMessageResponseDeserializer>();
             kernel.Bind<IYammerMessageDatabaseManager>().To<YammerMessageDatabaseManager>();
             kernel.Bind<IYammerMessagePoster>().To<YammerMessagePoster>();
