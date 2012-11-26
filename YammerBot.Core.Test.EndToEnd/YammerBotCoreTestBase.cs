@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
 using Ninject;
 using YammerBot.Core.Compliment.Implementation;
@@ -35,6 +30,7 @@ namespace YammerBot.Core.Test.EndToEnd
         protected Mock<IOauthValueProvider> _oauthValueProvider;
         protected Mock<IYammerDatabase> _yammerDatabase;
         protected Mock<IDictionaryService> _dictionaryService;
+        protected Mock<IRateGate> _rateGate;
 
         [SetUp]
         public void YammerBotCoreTestBaseSetUp()
@@ -47,6 +43,7 @@ namespace YammerBot.Core.Test.EndToEnd
             _oauthValueProvider = new Mock<IOauthValueProvider>();
             _yammerDatabase = new Mock<IYammerDatabase>();
             _dictionaryService = new Mock<IDictionaryService>();
+            _rateGate = new Mock<IRateGate>();
 
             _kernel = new StandardKernel();
             _kernel.Bind<IYammerMessageResponseDeserializer>().To<YammerMessageResponseDeserializer>();
@@ -74,6 +71,7 @@ namespace YammerBot.Core.Test.EndToEnd
             _kernel.Bind<IOauthValueProvider>().ToConstant(_oauthValueProvider.Object);
             _kernel.Bind<IYammerDatabase>().ToConstant(_yammerDatabase.Object);
             _kernel.Bind<IDictionaryService>().ToConstant(_dictionaryService.Object);
+            _kernel.Bind<IRateGate>().ToConstant(_rateGate.Object);
         }
     }
 }
