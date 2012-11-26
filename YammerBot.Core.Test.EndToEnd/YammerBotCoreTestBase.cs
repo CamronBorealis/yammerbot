@@ -18,6 +18,7 @@ using YammerBot.Core.System.Implementation;
 using YammerBot.Core.System.Interface;
 using YammerBot.Core.Yammer.Implementation;
 using YammerBot.Core.Yammer.Interface;
+using YammerBot.FunctionalCore;
 
 namespace YammerBot.Core.Test.EndToEnd
 {
@@ -33,6 +34,7 @@ namespace YammerBot.Core.Test.EndToEnd
         protected Mock<IYammerService> _yammerService;
         protected Mock<IOauthValueProvider> _oauthValueProvider;
         protected Mock<IYammerDatabase> _yammerDatabase;
+        protected Mock<IDictionaryService> _dictionaryService;
 
         [SetUp]
         public void YammerBotCoreTestBaseSetUp()
@@ -44,6 +46,7 @@ namespace YammerBot.Core.Test.EndToEnd
             _yammerService = new Mock<IYammerService>();
             _oauthValueProvider = new Mock<IOauthValueProvider>();
             _yammerDatabase = new Mock<IYammerDatabase>();
+            _dictionaryService = new Mock<IDictionaryService>();
 
             _kernel = new StandardKernel();
             _kernel.Bind<IYammerMessageResponseDeserializer>().To<YammerMessageResponseDeserializer>();
@@ -70,6 +73,7 @@ namespace YammerBot.Core.Test.EndToEnd
             _kernel.Bind<IYammerService>().ToConstant(_yammerService.Object);
             _kernel.Bind<IOauthValueProvider>().ToConstant(_oauthValueProvider.Object);
             _kernel.Bind<IYammerDatabase>().ToConstant(_yammerDatabase.Object);
+            _kernel.Bind<IDictionaryService>().ToConstant(_dictionaryService.Object);
         }
     }
 }
