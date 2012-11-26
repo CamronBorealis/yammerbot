@@ -1,6 +1,6 @@
-﻿using System.Collections;
+using System.Collections;
 
-namespace YammerBot.Core.System.Interface
+namespace YammerBot.Core.Yammer.Interface
 {
     public interface IYammerService
     {

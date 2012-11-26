@@ -67,6 +67,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DevDefined.OAuth\DevDefined.OAuth.csproj">
+      <Project>{61B700B6-3911-4CEF-8751-7F42CA765068}</Project>
+      <Name>DevDefined.OAuth</Name>
+    </ProjectReference>
     <ProjectReference Include="..\YammerBot.Core\YammerBot.Core.csproj">
       <Project>{1484c8a5-80af-4458-b68d-659873e9bcb5}</Project>
       <Name>YammerBot.Core</Name>

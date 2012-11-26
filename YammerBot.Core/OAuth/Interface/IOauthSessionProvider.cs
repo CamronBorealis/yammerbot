@@ -4,6 +4,6 @@ namespace YammerBot.Core.OAuth.Interface
 {
     public interface IOauthSessionProvider
     {
-        OAuthSession GetOAuthSession();
+        IOAuthSession GetOAuthSession();
     }
 }

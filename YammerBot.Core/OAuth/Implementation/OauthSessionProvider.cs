@@ -33,7 +33,7 @@ namespace YammerBot.Core.OAuth.Implementation
             _session.AccessToken = accessToken;
         }
 
-        public OAuthSession GetOAuthSession()
+        public IOAuthSession GetOAuthSession()
         {
             return _session;
         }

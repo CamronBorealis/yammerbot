@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using DevDefined.OAuth.Consumer;
 using YammerBot.Core.OAuth.Interface;
-using YammerBot.Core.System.Interface;
+using YammerBot.Core.Yammer.Interface;
 
 namespace YammerBot.Core.Yammer.Implementation
 {

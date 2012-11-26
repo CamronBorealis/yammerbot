@@ -17,7 +17,9 @@ namespace YammerBot.Core.Yammer.Implementation
         private readonly IRandomNumberGenerator _randomNumberGenerator;
         private readonly IYammerCommandFetcher _commandFetcher;
 
-        public YammerTaskRunner(IYammerMessagePoster poster, IYammerMessageFetcher messageFetcher, IYammerMessageDatabaseManager databaseManager, IYammerResponseFetcher responseFetcher, IRandomNumberGenerator randomNumberGenerator, IYammerCommandFetcher commandFetcher)
+        public YammerTaskRunner(IYammerMessagePoster poster, IYammerMessageFetcher messageFetcher,
+            IYammerMessageDatabaseManager databaseManager, IYammerResponseFetcher responseFetcher,
+            IRandomNumberGenerator randomNumberGenerator, IYammerCommandFetcher commandFetcher)
         {
             _poster = poster;
             _messageFetcher = messageFetcher;

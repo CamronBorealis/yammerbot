@@ -41,7 +41,8 @@ namespace DevDefined.OAuth.Consumer
 		Action<string> ResponseBodyAction { get; set; }
 		IConsumerRequest Request();
 		IConsumerRequest Request(IToken accessToken);
-		IToken GetRequestToken();
+        IToken GetRequestToken();
+        IToken GetRequestToken(string method);
 		IToken ExchangeRequestTokenForAccessToken(IToken requestToken);
 		IToken ExchangeRequestTokenForAccessToken(IToken requestToken, string verificationCode);
 		IToken ExchangeRequestTokenForAccessToken(IToken requestToken, string method, string verificationCode);
