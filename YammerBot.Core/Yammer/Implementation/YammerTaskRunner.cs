@@ -37,8 +37,8 @@ namespace YammerBot.Core.Yammer.Implementation
 
             var context = new OAuthConsumerContext
             {
-                ConsumerKey = @"ZWZ4FiczbUeQbuDyp1JhDg",
-                ConsumerSecret = @"14HZ8T9YgIuWQtlaFdhtLLBncWx0ZHbuoioNzdSzrA",
+                ConsumerKey = @"YourConsumerKey",
+                ConsumerSecret = @"YourConsumerSecret",
                 SignatureMethod = SignatureMethod.PlainText,
                 UseHeaderForOAuthParameters = true
             };
